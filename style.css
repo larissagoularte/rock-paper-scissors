@@ -6,10 +6,13 @@ body{
 
 }
 
-.btn-img{
-    width: 80px;
+
+img{
+    width: 100px;
 }
 
+
+/*ROUND*/
 .round{
     display: flex;
     flex-direction: column;
@@ -20,8 +23,8 @@ body{
     padding: 0 50px;
 }
 
-#player-img, #computer-img{
-    width: 150px;
+.choices{
+    display: flex;
 }
 
 .player-choice, .computer-choice {
@@ -30,49 +33,12 @@ body{
     align-items: center;
 }
 
-img{
-    width: 100px;
+#player-img, #computer-img{
+    width: 150px;
 }
 
-.choices{
-    display: flex;
-}
 
-.buttons{
-    padding: 20px 0;
-}
-
-.buttons .btn{
-    border: 0;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-}
-
-.btn:hover{
-    background-color: #e6e6e6;
-}
-
-.btn:active{
-    background-color: #eeeeee;
-}
-
-#resetBtn{
-    border: 0;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    padding: 8px;
-    display: none;
-}
-
-#resetBtn:hover{
-    background-color: #e6e6e6;
-}
-
-#resetBtn:active{
-    background-color: #eeeeee;
-
-}
-
+/*SCOREBOARD*/
 .scores{
     display: flex;
     width: 700px;
@@ -91,7 +57,48 @@ img{
     border-radius: 5px;
 }
 
+/*BUTTONS*/
+.buttons{
+    padding: 20px 0;
+}
+
+.buttons .btn{
+    border: 0;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.btn:hover{
+    background-color: #e6e6e6;
+}
+
+.btn:active{
+    background-color: #eeeeee;
+}
+
+.btn-img{
+    width: 80px;
+}
+
 .disabled-button {
     opacity: 0.5;
     pointer-events: none;
+}
+
+/*RESET BUTTON*/
+#reset-btn{
+    border: 0;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 8px;
+    display: none;
+}
+
+#reset-btn:hover{
+    background-color: #e6e6e6;
+}
+
+#reset-btn:active{
+    background-color: #eeeeee;
+
 }
