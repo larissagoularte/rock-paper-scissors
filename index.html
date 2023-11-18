@@ -12,41 +12,42 @@
     <title>rock, papers, scissors!</title>
 </head>
 <body>
-    <h1>rock, paper, scissors</h1>
-
-    <!--ROUND-->
-    <div class="round">
-        <h3 class="output">first to score 5 points wins!</h3>
-
-        <div class="choices">
+    <div class="main">
+        <h1>rock, paper, scissors</h1>
         
-            <!--PLAYER CHOICE OUTPUT-->
-            <div class="player-choice">                
-                <h3>you:</h3>
-                <div class="player-choice">
-                    <img class="choice-img" id="player-img" src='images/q-mark.png'>
+        <!--ROUND-->
+        <div class="round">
+            <h3 class="output">first to score 5 points wins!</h3>
+        
+            <div class="choices">
+            
+                <!--PLAYER CHOICE OUTPUT-->
+                <div class="player-choice">                
+                    <h3>you:</h3>
+                    <div class="player-choice">
+                        <img class="choice-img" id="player-img" src='images/q-mark.png'>
+                    </div>
                 </div>
-            </div>
-
-            <!--COMPUTER CHOICE OUTPUT-->
-            <div class="computer-choice">
-                <h3>computer: </h3>
-                <div class="computer-img">
-                    <img class="choice-img" id="computer-img" src='images/q-mark.png'>
+            
+                <!--COMPUTER CHOICE OUTPUT-->
+                <div class="computer-choice">
+                    <h3>computer: </h3>
+                    <div class="computer-img">
+                        <img class="choice-img" id="computer-img" src='images/q-mark.png'>
+                    </div>
                 </div>
+            
             </div>
-
         </div>
-    </div>
-
-    <!--SCOREBOARD-->
-    <div class="scores">
-        <p id="player-score">player score: </p>
-        <p id="computer-score">computer score:</p>
-    </div>
-
-    <!--BUTTONS-->
-    <div class="buttons">
+    
+        <!--SCOREBOARD-->
+        <div class="scores">
+            <p id="player-score">player score: </p>
+            <p id="computer-score">computer score:</p>
+        </div>
+    
+        <!--BUTTONS-->
+        <div class="buttons">
 
         <!--ROCK-->
         <button class="btn" id="rock">
@@ -63,11 +64,16 @@
             <img class="btn-img" src="images/scissors.png">
         </button>
 
+        </div>
+    
+        <button id="reset-btn">reset</button>
     </div>
-
-
-    <button id="reset-btn">reset</button>
-
+        <!--FOOTER-->
+        <div class="footer">
+            <p>made by larissagoularte</p>
+            <a href="https://github.com/larissagoularte"><img id="github" src="images/github.png"></a>
+        </div>
+    
     <script src="game.js"></script>
 </body>
 </html>

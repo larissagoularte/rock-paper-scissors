@@ -1,149 +1,148 @@
-let playerChoice;
-let computerChoice;
-let playerScore = 0;
-let computerScore = 0;
+let player_choice;
+let computer_choice;
+let player_score = 0;
+let computer_score = 0;
 
 let choice;
 let winner;
 
-const resetBtn = document.getElementById('resetBtn')
-const player = document.querySelector('#pScore');
-
-
-resetBtn.addEventListener('click', resetGame)
-
-player.textContent = `player score: ${playerScore}`
-
-const computer = document.querySelector('#cScore');
-computer.textContent = `computer score: ${computerScore}`
-
+const reset_btn = document.getElementById('reset-btn')
+const player = document.querySelector('#player-score');
+const computer = document.querySelector('#computer-score');
 const output = document.querySelector('.output');
-
 const buttons = document.querySelectorAll(".btn");
 
+reset_btn.addEventListener('click', reset_game)
+player.textContent = `player score: ${player_score}`
+computer.textContent = `computer score: ${computer_score}`
+
+//BUTTONS
 buttons.forEach((button)=>{
     button.addEventListener('click', ()=>{
-        playerChoice = button.id;
-        computerChoice = (computerSelection())
-        playRound();
-        updateScores();
-        updateChoices(playerChoice, computerChoice);
+        player_choice = button.id;
+        computer_choice = (computer_selection())
+        play_round();
+        update_scores();
+        update_choices(player_choice, computer_choice);
     })
 })
 
-function computerSelection(){
-    let randNum = Math.floor(Math.random()*3);
+//PLAY ROUND
+function play_round(){
+    if(
+        (player_choice === "rock" && computer_choice === "scissors") ||
+        (player_choice  === "paper" && computer_choice === "rock") ||
+        (player_choice === "scissors" && computer_choice === "paper")
+    ){
+        player_score++
+        winner = 'player'
+    } else if(
+        (player_choice === "rock" && computer_choice === "paper") ||
+        (player_choice === "paper" && computer_choice === "scissors") ||
+        (player_choice === "scissors" && computer_choice === "rock")
+    ){
+        computer_score++
+        winner = 'computer'
+    } else{
+        winner = 'tie'
+    }
+            
+    update_output(winner,player_choice,computer_choice)
+    
+}
 
-    if(randNum === 0){
+function computer_selection(){
+    let rand_num = Math.floor(Math.random()*3);
+
+    if(rand_num === 0){
         choice = "rock";
-    } else if(randNum === 1){
+    } else if(rand_num === 1){
         choice = "paper";
-    } else if (randNum === 2){
+    } else if (rand_num === 2){
         choice = "scissors"
     }
 
     return choice;
 }
 
-function playRound(){
-    if(
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
-    ){
-        playerScore++
-        winner = 'player'
-    } else if(
-        (playerChoice === "rock" && computerChoice === "paper") ||
-        (playerChoice === "paper" && computerChoice === "scissors") ||
-        (playerChoice === "scissors" && computerChoice === "rock")
-    ){
-        computerScore++
-        winner = 'computer'
-    } else{
-        winner = 'tie'
-    }
-            
-    updateOutput(winner,playerChoice,computerChoice)
-    
+//UPDATES
+function update_scores() {
+    player.textContent = `player score: ${player_score}`;
+    computer.textContent = `computer score: ${computer_score}`;
 }
 
-function updateScores() {
-    player.textContent = `player score: ${playerScore}`;
-    computer.textContent = `computer score: ${computerScore}`;
-}
+function update_choices(player_choice, computer_choice){
+    const player_img = document.getElementById('player-img')
+    const computer_img = document.getElementById('computer-img')
 
-function updateChoices(playerChoice, computerChoice){
-    const pChoiceImg = document.getElementById('pChoiceImg')
-    const cChoiceImg = document.getElementById('cChoiceImg')
-
-    switch(playerChoice){
+    switch(player_choice){
         case "rock":
-            pChoiceImg.src = 'images/rock.png'
+            player_img.src = 'images/rock.png'
             break
         case "paper":
-            pChoiceImg.src = 'images/paper.png'
+            player_img.src = 'images/paper.png'
             break
         case "scissors":
-            pChoiceImg.src = 'images/scissors.png'
+            player_img.src = 'images/scissors.png'
             break
     }
 
-    switch(computerChoice){
+    switch(computer_choice){
         case "rock":
-            cChoiceImg.src = 'images/rock.png'
+            computer_img.src = 'images/rock.png'
             break
         case "paper":
-            cChoiceImg.src = 'images/paper.png'
+            computer_img.src = 'images/paper.png'
             break
         case "scissors":
-            cChoiceImg.src = 'images/scissors.png'
+            computer_img.src = 'images/scissors.png'
             break
     }
 }
 
-function updateOutput(winner, playerChoice, computerChoice){
-    if(playerScore===5){
+function update_output(winner, player_choice, computer_choice){
+    if(player_score===5){
         output.textContent = "you won :D"
-        showResetBtn();
-    } else if(computerScore===5){
+        show_reset_btn();
+    } else if(computer_score===5){
         output.textContent = "you lost :("
-        showResetBtn();
+        show_reset_btn();
     } else {
         if(winner === 'player'){
-            output.textContent = `you win! ${playerChoice} beats ${computerChoice}`
+            output.textContent = `you win! ${player_choice} beats ${computer_choice}`
         } else if(winner==='computer'){
-            output.textContent = `you lose! ${computerChoice} beats ${playerChoice}`
+            output.textContent = `you lose! ${computer_choice} beats ${player_choice}`
         } else {
-            output.textContent = `it's a tie. ${computerChoice} ties with ${playerChoice}`
+            output.textContent = `it's a tie. ${computer_choice} ties with ${player_choice}`
         }
     }   
 }
 
-function resetGame(){
-    hideResetBtn();
-    const pChoiceImg = document.getElementById('pChoiceImg')
-    const cChoiceImg = document.getElementById('cChoiceImg')
+//RESET GAME
+function reset_game(){
+    hide_reset_btn();
+    const player_img = document.getElementById('player-img')
+    const computer_img = document.getElementById('computer-img')
 
     output.textContent = 'first to score 5 points wins!'
-    playerScore = 0;
-    computerScore = 0;
+    player_score = 0;
+    computer_score = 0;
     winner = "";
-    pChoiceImg.src = 'images/q-mark.png'
-    cChoiceImg.src = 'images/q-mark.png'
+    player_img.src = 'images/q-mark.png'
+    computer_img.src = 'images/q-mark.png'
 
-    updateScores();
+    update_scores();
 }
 
-function showResetBtn(){
-    resetBtn.style.display = 'block';
+function show_reset_btn(){
+    reset_btn.style.display = 'block';
     buttons.forEach((button)=>{
         button.classList.add("disabled-button")
     })
 }
 
-function hideResetBtn() {
-    resetBtn.style.display = 'none';
+function hide_reset_btn() {
+    reset_btn.style.display = 'none';
     buttons.forEach((button)=>{
         button.classList.remove("disabled-button")
     })
